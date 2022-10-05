@@ -1,7 +1,5 @@
 #!/usr/bin/python3
 
-from email import header
-from queue import Empty
 import requests
 import json
 import signal
@@ -59,7 +57,7 @@ LibreNMS information may not be up to date due to polling intervalls.
         search_mac = mac_vendors_api(input_address)
         api_search_mac = requests.get(search_mac)
         if 'Not Found' in api_search_mac.text:
-            print('Unknown MAC-address.')
+            print('Unknown MAC-address or IP-address was not found in ARP-table.')
         else:
             print('NIC manufacturer:', api_search_mac.text)
         search_librenms_connected_device = librenms_port_mac(input_address)
