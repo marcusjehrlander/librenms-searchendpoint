@@ -46,8 +46,11 @@ Script check librenms.domain.com to see if device is attached to  network and lo
 LibreNMS information may not be up to date due to polling intervalls.
 --------------------------------------------------------------------------------------------------------''')
     # Input
-    input_address = input('Enter MAC or IP-address: ')
-    print('--------------------------------------------------------------------------------------------------------')
+    try:
+        input_address = sys.argv[1]
+    except:
+        input_address = input('Enter MAC or IP-address: ')
+        print('--------------------------------------------------------------------------------------------------------')
 
         
     # Search for MAC/IP in LibreNMS arp-table, exits program if not found 
